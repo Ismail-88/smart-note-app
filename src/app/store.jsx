@@ -2,6 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import notesReducer from '../features/notes/notesSlice';
 import themeReducer from '../features/theme/themeSlice';
 
+
+
+
 // Load from localStorage
 const loadState = () => {
   try {
