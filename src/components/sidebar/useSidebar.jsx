@@ -7,7 +7,7 @@ import {
   deleteSelectedNotes
 } from "../../features/notes/notesSlice";
 
-import { toggleTheme } from "../../features/theme/themeSlice";
+import { toggleTheme } from "../../features/themes/themeSlice";
 import toast from "react-hot-toast";
 import { FolderOpen, Pin, Star } from "lucide-react";
 
