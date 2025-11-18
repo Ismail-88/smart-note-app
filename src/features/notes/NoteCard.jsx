@@ -73,38 +73,38 @@ function NoteCard({ note, showCheckbox  }) {
           onClick={(e) => {
             e.stopPropagation(); 
           }}
-          className="absolute top-2 left-2 w-4 h-4 cursor-pointer"
+          className="absolute w-4 h-4 cursor-pointer top-2 left-2"
         />
       )}
       {/* Header */}
       <div className="flex items-start justify-between mb-2 ml-6">
-        <h3 className="font-semibold truncate flex-1">{note.title}</h3>
+        <h3 className="flex-1 font-semibold truncate">{note.title}</h3>
         <div className="flex gap-1 ml-2">
-          <button onClick={handlePin} className="hover:scale-110 transition">
+          <button onClick={handlePin} className="transition hover:scale-110">
             <Pin size={16} className={note.pinned ? 'fill-blue-500 text-blue-500' : 'text-gray-400'} />
           </button>
-          <button onClick={handleStar} className="hover:scale-110 transition">
+          <button onClick={handleStar} className="transition hover:scale-110">
             <Star size={16} className={note.starred ? 'fill-yellow-400 text-yellow-400' : 'text-gray-400'} />
           </button>
-          <button onClick={handleDelete} className="hover:scale-110 transition">
+          <button onClick={handleDelete} className="transition hover:scale-110">
             <Trash2 size={16} className="text-red-500" />
           </button>
         </div>
       </div>
 
       {/* Content Preview */}
-      <p className="text-sm text-gray-500 mb-2 line-clamp-2">
-        {note.content || 'No content'}
+      <p className="mb-2 text-sm text-gray-500 line-clamp-2">
+        {note.content || '....'}
       </p>
 
       {/* Footer */}
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex flex-wrap items-center gap-2">
         {note.tags.slice(0, 3).map(tag => (
-          <span key={tag} className="text-xs px-2 py-1 bg-blue-600 text-white rounded">
+          <span key={tag} className="px-2 py-1 text-xs text-white bg-blue-600 rounded">
             {tag}
           </span>
         ))}
-        <span className="text-xs text-gray-500 ml-auto">
+        <span className="ml-auto text-xs text-gray-500">
           {formatDate(note.updated)}
         </span>
       </div>
