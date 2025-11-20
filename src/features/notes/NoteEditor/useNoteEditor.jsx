@@ -25,14 +25,14 @@ export default function useNoteEditor(note) {
 
   const effectiveMode = viewMode === "simple" ? "text" : mode;
 
-  // Sync when note changes
+  
   useEffect(() => {
     setTitle(note.title);
     setContent(note.content);
     setMode(note.mode);
   }, [note.id]);
 
-  // Auto-save
+ 
   useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(
@@ -46,6 +46,7 @@ export default function useNoteEditor(note) {
     return () => clearTimeout(timer);
   }, [title, content, mode]);
 
+  
   const handleSave = () => {
     dispatch(
       updateNote({
@@ -56,7 +57,7 @@ export default function useNoteEditor(note) {
     toast.success("Note saved!");
   };
 
-  // Drawing functions
+ 
   const startDrawing = (e) => {
     if (!canvasRef.current) return;
     setIsDrawing(true);

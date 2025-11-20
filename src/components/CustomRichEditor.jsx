@@ -7,21 +7,18 @@ function CustomRichEditor({ content, onChange }) {
   const theme = useSelector(state => state.theme.mode);
   const isDark = theme === 'dark';
 
-  // Initialize content
   useEffect(() => {
     if (editorRef.current && !editorRef.current.innerHTML && content) {
       editorRef.current.innerHTML = content;
     }
   }, []);
 
-  // Handle content change
   const handleInput = () => {
     if (editorRef.current) {
       onChange(editorRef.current.innerHTML);
     }
   };
 
-  // Format commands
   const format = (command, value = null) => {
     document.execCommand(command, false, value);
     editorRef.current.focus();
@@ -42,7 +39,7 @@ function CustomRichEditor({ content, onChange }) {
 
   return (
     <div className={`rounded-lg border ${inputBg}`}>
-      {/* Toolbar */}
+      
       <div className={`p-2 border-b ${inputBg} flex gap-1 flex-wrap ${toolbarBg}`}>
         {buttons.map(({ icon: Icon, command, value, title }) => (
           <button
@@ -50,15 +47,14 @@ function CustomRichEditor({ content, onChange }) {
             type="button"
             onClick={() => format(command, value)}
             title={title}
-            className="p-2 rounded hover:bg-gray-600 transition"
+            className="p-2 transition rounded hover:bg-gray-600"
           >
             <Icon size={18} />
           </button>
         ))}
         
-        <div className="border-l border-gray-500 mx-2" />
+        <div className="mx-2 border-l border-gray-500" />
         
-        {/* Text Color */}
         <input
           type="color"
           onChange={(e) => format('foreColor', e.target.value)}
@@ -66,7 +62,6 @@ function CustomRichEditor({ content, onChange }) {
           title="Text Color"
         />
         
-        {/* Background Color */}
         <input
           type="color"
           onChange={(e) => format('backColor', e.target.value)}
@@ -75,7 +70,6 @@ function CustomRichEditor({ content, onChange }) {
         />
       </div>
 
-      {/* Editor */}
       <div
         ref={editorRef}
         contentEditable

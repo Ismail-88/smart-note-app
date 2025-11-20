@@ -36,21 +36,21 @@ function Sidebar() {
 
   return (
     <aside className={`w-80 ${bg} border-r ${border} flex flex-col`}>
-      {/* Header */}
+      
       <div className={`p-4 border-b ${border}`}>
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-bold">Smart Notes</h1>
           <div className="flex gap-2">
             <button
               onClick={handlers.handleThemeToggle}
-              className="p-2 rounded hover:bg-gray-700 transition"
+              className="p-2 transition rounded hover:bg-gray-700"
               title="Toggle Theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={handlers.handleNewNote}
-              className="p-2 rounded bg-blue-600 hover:bg-blue-700 text-white transition"
+              className="p-2 text-white transition bg-blue-600 rounded hover:bg-blue-700"
               title="New Note"
             >
               <Plus size={20} />
@@ -60,13 +60,12 @@ function Sidebar() {
 
         <SearchBar />
 
-        {/* Selection Controls */}
         <div className="flex items-center gap-2 mt-3">
           <span className="text-sm text-gray-500">{selectedNotes.length} selected</span>
 
           <button
             onClick={handlers.handleSelectAll}
-            className="text-sm text-blue-500 hover:text-blue-400 transition"
+            className="text-sm text-blue-500 transition hover:text-blue-400"
           >
             {selectedNotes.length > 0 ? "Clear" : "Select All"}
           </button>
@@ -75,14 +74,14 @@ function Sidebar() {
             <>
               <button
                 onClick={handlers.handleClearSelection}
-                className="text-sm text-gray-500 hover:text-gray-400 transition"
+                className="text-sm text-gray-500 transition hover:text-gray-400"
               >
                 Clear
               </button>
 
               <button
                 onClick={handlers.handleDeleteSelected}
-                className="ml-auto px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded transition flex items-center gap-1"
+                className="flex items-center gap-1 px-3 py-1 ml-auto text-sm text-white transition bg-red-600 rounded hover:bg-red-700"
               >
                 <Trash2 size={14} />
                 Delete ({selectedNotes.length})
@@ -92,7 +91,6 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* View Mode Selector */}
       <div className={`p-4 border-b ${border}`}>
         <div className="relative">
           <select
@@ -105,11 +103,11 @@ function Sidebar() {
             <option value="simple">Simple</option>
             <option value="advanced">Advanced</option>
           </select>
-          <ChevronDown className="absolute right-3 top-3 pointer-events-none text-gray-400" size={16} />
+          <ChevronDown className="absolute text-gray-400 pointer-events-none right-3 top-3" size={16} />
         </div>
       </div>
 
-      {/* Filters */}
+      
       <div className="p-4 space-y-4">
         <div className="flex gap-2">
           {["all", "pinned", "starred"].map((f) => (
@@ -126,9 +124,9 @@ function Sidebar() {
           ))}
         </div>
 
-        {/* Sort Dropdown */}
+        
         <div>
-          <label className="text-sm text-gray-500 mb-1 block">Recent</label>
+          <label className="block mb-1 text-sm text-gray-500">Recent</label>
           <div className="relative">
             <select
               value={sortBy}
@@ -141,21 +139,21 @@ function Sidebar() {
               <option value="created">Time Created</option>
               <option value="titleAZ">Title A-Z</option>
             </select>
-            <ChevronDown className="absolute right-3 top-3 pointer-events-none text-gray-400" size={14} />
+            <ChevronDown className="absolute text-gray-400 pointer-events-none right-3 top-3" size={14} />
           </div>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-gray-500 mb-1">Notes</h3>
+          <h3 className="mb-1 text-sm font-semibold text-gray-500">Notes</h3>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-blue-500" />
+            <div className="w-3 h-3 bg-blue-500 rounded-full" />
             <span className="text-sm">All Notes ({notesCount})</span>
           </div>
         </div>
       </div>
 
-      {/* Notes List */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
+      
+      <div className="flex-1 px-4 pb-4 overflow-y-auto">
         <NotesList showCheckbox={showCheckbox} />
       </div>
     </aside>

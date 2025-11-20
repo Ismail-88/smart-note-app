@@ -3,8 +3,6 @@ import notesReducer from '../features/notes/notesSlice';
 import themeReducer from '../features/themes/themeSlice';
 
 
-
-
 // Load from localStorage
 const loadState = () => {
   try {
@@ -36,5 +34,3 @@ export const store = configureStore({
 store.subscribe(() => {
   saveState(store.getState());
 });
-
-export default store;

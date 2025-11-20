@@ -30,21 +30,21 @@ export default function NoteEditor({ note }) {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Toolbar */}
+      
       <EditorToolbar mode={mode} setMode={setMode} onSave={handleSave} />
 
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 p-6 overflow-y-auto">
         <div className="max-w-4xl mx-auto space-y-4">
-          {/* Title */}
+         
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Note Title"
-            className="text-3xl font-bold w-full bg-transparent border-none focus:outline-none"
+            className="w-full text-3xl font-bold bg-transparent border-none focus:outline-none"
           />
 
-          {/* Tags & Metadata */}
+          
           <div className="space-y-3">
             <TagManager noteId={note.id} tags={note.tags} />
             <div className="flex gap-4 text-sm text-gray-500">
@@ -53,7 +53,7 @@ export default function NoteEditor({ note }) {
             </div>
           </div>
 
-          {/* Text Mode */}
+          
           {effectiveMode === "text" && (
             <textarea
               value={content}
@@ -63,15 +63,15 @@ export default function NoteEditor({ note }) {
             />
           )}
 
-          {/* Rich Text Mode */}
+          
           {effectiveMode === "rich" && (
             <CustomRichEditor content={content} onChange={setContent} />
           )}
 
-          {/* Draw Mode */}
+         
           {effectiveMode === "draw" && (
             <div className={`p-4 rounded-lg ${inputBg} border`}>
-              <div className="mb-4 flex items-center gap-4 flex-wrap">
+              <div className="flex flex-wrap items-center gap-4 mb-4">
                 <div className="flex gap-2">
                   <span className="text-sm">Color:</span>
                   {["#000000", "#ef4444", "#3b82f6", "#10b981", "#f59e0b", "#8b5cf6"].map(
@@ -88,7 +88,7 @@ export default function NoteEditor({ note }) {
                   )}
                 </div>
 
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <span className="text-sm">Size:</span>
                   <input
                     type="range"
@@ -103,7 +103,7 @@ export default function NoteEditor({ note }) {
 
                 <button
                   onClick={clearCanvas}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded flex items-center gap-2 ml-auto"
+                  className="flex items-center gap-2 px-4 py-2 ml-auto text-white bg-red-600 rounded hover:bg-red-700"
                 >
                   <Trash2 size={16} />
                   Clear
@@ -118,7 +118,7 @@ export default function NoteEditor({ note }) {
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
                 onMouseLeave={stopDrawing}
-                className="border-2 rounded cursor-crosshair w-full bg-white"
+                className="w-full bg-white border-2 rounded cursor-crosshair"
               />
             </div>
           )}

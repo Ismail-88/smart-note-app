@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Star, Trash2, Pin } from 'lucide-react';
+import { Star, Trash2, Pin, StickyNote } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { setActive, deleteNote, toggleStar, togglePin, toggleSelectNote } from './notesSlice';
 
@@ -64,7 +64,7 @@ function NoteCard({ note, showCheckbox  }) {
       onClick={() => dispatch(setActive(note.id))}
       className={`p-4 rounded-lg cursor-pointer border-2 transition hover:border-gray-500 ${cardBg} relative`}
     >
-      {/* Checkbox */}
+     
       {showCheckbox && (
         <input
           type="checkbox"
@@ -76,9 +76,9 @@ function NoteCard({ note, showCheckbox  }) {
           className="absolute w-4 h-4 cursor-pointer top-2 left-2"
         />
       )}
-      {/* Header */}
+      
       <div className="flex items-start justify-between mb-2 ml-6">
-        <h3 className="flex-1 font-semibold truncate">{note.title}</h3>
+        <h3 className="flex-1 font-semibold truncate"> {note.title}</h3>
         <div className="flex gap-1 ml-2">
           <button onClick={handlePin} className="transition hover:scale-110">
             <Pin size={16} className={note.pinned ? 'fill-blue-500 text-blue-500' : 'text-gray-400'} />
@@ -92,12 +92,12 @@ function NoteCard({ note, showCheckbox  }) {
         </div>
       </div>
 
-      {/* Content Preview */}
+      
       <p className="mb-2 text-sm text-gray-500 line-clamp-2">
         {note.content || '....'}
       </p>
 
-      {/* Footer */}
+      
       <div className="flex flex-wrap items-center gap-2">
         {note.tags.slice(0, 3).map(tag => (
           <span key={tag} className="px-2 py-1 text-xs text-white bg-blue-600 rounded">
